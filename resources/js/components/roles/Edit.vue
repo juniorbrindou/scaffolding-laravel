@@ -59,10 +59,10 @@
         </div>
         <div class="card-body collapse" id="collapsePermissions">
           <form class="form-horizontal">
-            <div class="form-group row" v-for="module in role.modulesPermissions">
+            <div class="form-group row" v-for="module in role.modulesPermissions" v-bind:key="module">
               <label class="col-md-3"><strong>{{module.display_name}}</strong></label>
               <div class="col-md-9">
-                <div class="clearfix" v-for="permission in module.permissions">
+                <div class="clearfix" v-for="permission in module.permissions" v-bind:key="permission">
                   <span>{{permission.display_name}}</span>
                   <label class="switch switch-pill switch-outline-success-alt float-right">
                     <input class="switch-input" type="checkbox" v-model="permission.allow">
@@ -89,7 +89,7 @@
         </div>
         <div class="card-body collapse" id="collapseUsers">
           <ul class="list-unstyled">
-            <a :href="`/users/${user.id}/edit`" v-for="user in role.users">
+            <a :href="`/users/${user.id}/edit`" v-for="user in role.users" v-bind:key="user">
             <li class="media border-bottom border-light pb-2 mb-2">
               <div class="avatar float-left mr-3">
                 <img class="img-avatar" :src="user.avatar_url">

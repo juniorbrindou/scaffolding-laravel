@@ -67597,6 +67597,7 @@ var render = function() {
               return _c(
                 "tr",
                 {
+                  key: _vm.roles,
                   on: {
                     click: function($event) {
                       return _vm.editRole(role.id)
@@ -67620,12 +67621,16 @@ var render = function() {
                       { staticClass: "avatars-stack" },
                       [
                         _vm._l(role.users.slice(0, 4), function(user, index) {
-                          return _c("div", { staticClass: "avatar-sm" }, [
-                            _c("img", {
-                              staticClass: "img-avatar",
-                              attrs: { src: user.avatar_url }
-                            })
-                          ])
+                          return _c(
+                            "div",
+                            { key: index, staticClass: "avatar-sm" },
+                            [
+                              _c("img", {
+                                staticClass: "img-avatar",
+                                attrs: { src: user.avatar_url }
+                              })
+                            ]
+                          )
                         }),
                         _vm._v(" "),
                         role.users.length > 4

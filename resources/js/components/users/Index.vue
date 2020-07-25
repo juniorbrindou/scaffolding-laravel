@@ -50,7 +50,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="user in users" @click="editUser(user.id)">
+          <tr v-for="user in users" @click="editUser(user.id)" v-bind:key="user">
             <td class="d-none d-sm-table-cell">{{user.id}}</td>
             <td>
               <div class="media">
@@ -67,7 +67,7 @@
               </div>
             </td>
             <td>
-              <span v-for="(role, index) in user.roles">
+              <span v-for="(role, index) in user.roles" v-bind:key="role">
                 {{role.name}}<span v-if="index+1 < user.roles.length">, </span>
               </span>
             </td>
@@ -90,7 +90,7 @@
               <li class="page-item" :class="{'disabled': filters.pagination.current_page <= 1}">
                 <a class="page-link" href="#" @click.prevent="changePage(filters.pagination.current_page -  1)"><i class="fas fa-angle-left"></i></a>
               </li>
-              <li class="page-item" v-for="page in filters.pagination.last_page" :class="{'active': filters.pagination.current_page == page}">
+              <li class="page-item" v-for="page in filters.pagination.last_page" :class="{'active': filters.pagination.current_page == page}" v-bind:key="page">
                 <span class="page-link" v-if="filters.pagination.current_page == page">{{page}}</span>
                 <a class="page-link" href="#" v-else @click.prevent="changePage(page)">{{page}}</a>
               </li>

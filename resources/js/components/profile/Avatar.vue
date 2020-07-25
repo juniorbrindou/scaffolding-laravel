@@ -6,9 +6,11 @@
         :options="optionsAvatar"
         :on-sending="sendingAvatar"
         :on-complete="completeAvatar">
+        
         <template slot="clip-uploader-action">
             <button class="dz-message btn btn-outline-secondary btn-sm" type="button">Choose file</button>
         </template>
+
       </vue-clip>
       <small class="form-text text-muted">The maximum file size allowed is 10MB.</small>
       <small class="form-text text-danger" v-if="errors.status">{{errors.message}}</small>

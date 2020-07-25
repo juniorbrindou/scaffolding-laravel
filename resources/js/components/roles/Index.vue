@@ -55,13 +55,13 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="role in roles" @click="editRole(role.id)">
+          <tr v-for="role in roles" @click="editRole(role.id)" v-bind:key="role">
             <td class="d-none d-sm-table-cell">{{role.id}}</td>
             <td>{{role.display_name}}</td>
             <td class="d-none d-sm-table-cell">{{role.name}}</td>
             <td>
               <div class="avatars-stack">
-                <div class="avatar-sm" v-for="(user, index) in role.users.slice(0,4)">
+                <div class="avatar-sm" v-for="(user, index) in role.users.slice(0,4)" v-bind:key="index" >
                   <img class="img-avatar" :src="user.avatar_url">
                 </div>
                 <div class="avatar-sm ml-3" v-if="role.users.length > 4"> +{{role.users.length - 4}}</div>
@@ -93,7 +93,7 @@
               <li class="page-item" :class="{'disabled': filters.pagination.current_page <= 1}">
                 <a class="page-link" href="#" @click.prevent="changePage(pagination.current_page -  1)"><i class="fas fa-angle-left"></i></a>
               </li>
-              <li class="page-item" v-for="page in filters.pagination.last_page" :class="{'active': filters.pagination.current_page == page}">
+              <li class="page-item" v-bind:key="page"  v-for="page in filters.pagination.last_page" :class="{'active': filters.pagination.current_page == page}">
                 <span class="page-link" v-if="filters.pagination.current_page == page">{{page}}</span>
                 <a class="page-link" href="#" v-else @click.prevent="changePage(page)">{{page}}</a>
               </li>

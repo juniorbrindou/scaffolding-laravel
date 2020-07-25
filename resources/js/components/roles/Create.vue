@@ -34,10 +34,10 @@
         </div>
         <div class="card-body">
           <form class="form-horizontal" v-if="!loading">
-            <div class="form-group row" v-for="module in role.modulesPermissions">
+            <div class="form-group row" v-for="module in role.modulesPermissions" v-bind:key="module">
               <label class="col-md-3"><strong>{{module.display_name}}</strong></label>
               <div class="col-md-9">
-                <div class="clearfix" v-for="permission in module.permissions">
+                <div class="clearfix" v-for="permission in module.permissions" v-bind:key="permission">
                   <span>{{permission.display_name}}</span>
                   <label class="switch switch-pill switch-outline-success-alt float-right">
                     <input class="switch-input" type="checkbox" v-model="permission.allow">
