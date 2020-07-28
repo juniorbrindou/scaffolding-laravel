@@ -17,7 +17,7 @@ class CreateTarificationsTable extends Migration
             $table->increments('id');
 
             $table->integer('montant');
-            $table->date('date')->default(new DateTime());
+            $table->date('date');
 
             $table->timestamps();
         });
