@@ -15,6 +15,9 @@ class CreateLigneTarifsTable extends Migration
     {
         Schema::create('ligne_tarifs', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('tarification_id');
+            $table->integer('service_id');
+
             $table->timestamps();
         });
     }
