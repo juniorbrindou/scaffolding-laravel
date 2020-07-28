@@ -25,16 +25,15 @@ class CreatePrestatairesTable extends Migration
             $table->integer('quartier_habit_id')->nullable();
             $table->string('password');
 
-
             $table->integer('type_carte_id');
             $table->string('carte');
             $table->string('diplome');
             $table->integer('experience')->nullable();
-            $table->integer('type_id');
+            $table->integer('type');
             $table->string('societe')->nullable();
             $table->string('commune_travail_id')->nullable();
 
-
+            $table->integer('etat')->default(0);
 
             $table->rememberToken();
             $table->timestamp('email_verified_at')->nullable();
