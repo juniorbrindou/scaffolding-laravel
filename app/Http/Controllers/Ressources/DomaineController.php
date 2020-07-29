@@ -1,11 +1,10 @@
 <?php
+namespace App\Http\Controllers\Ressources;
 
-namespace App\Http\Controllers;
-
-use App\Ville;
+use App\Domaine;
 use Illuminate\Http\Request;
 
-class VilleController extends Controller
+class DomaineController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +40,10 @@ class VilleController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Ville  $ville
+     * @param  \App\Domaine  $domaine
      * @return \Illuminate\Http\Response
      */
-    public function show(Ville $ville)
+    public function show(Domaine $domaine)
     {
         //
     }
@@ -52,10 +51,10 @@ class VilleController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Ville  $ville
+     * @param  \App\Domaine  $domaine
      * @return \Illuminate\Http\Response
      */
-    public function edit(Ville $ville)
+    public function edit(Domaine $domaine)
     {
         //
     }
@@ -64,10 +63,10 @@ class VilleController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Ville  $ville
+     * @param  \App\Domaine  $domaine
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Ville $ville)
+    public function update(Request $request, Domaine $domaine)
     {
         //
     }
@@ -75,10 +74,10 @@ class VilleController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Ville  $ville
+     * @param  \App\Domaine  $domaine
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Ville $ville)
+    public function destroy(Domaine $domaine)
     {
         //
     }

@@ -1,11 +1,10 @@
 <?php
+namespace App\Http\Controllers\Ressources;
 
-namespace App\Http\Controllers;
-
-use App\Prestataire;
+use App\Service;
 use Illuminate\Http\Request;
 
-class PrestataireController extends Controller
+class ServiceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +40,10 @@ class PrestataireController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Prestataire  $prestataire
+     * @param  \App\Service  $service
      * @return \Illuminate\Http\Response
      */
-    public function show(Prestataire $prestataire)
+    public function show(Service $service)
     {
         //
     }
@@ -52,10 +51,10 @@ class PrestataireController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Prestataire  $prestataire
+     * @param  \App\Service  $service
      * @return \Illuminate\Http\Response
      */
-    public function edit(Prestataire $prestataire)
+    public function edit(Service $service)
     {
         //
     }
@@ -64,10 +63,10 @@ class PrestataireController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Prestataire  $prestataire
+     * @param  \App\Service  $service
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Prestataire $prestataire)
+    public function update(Request $request, Service $service)
     {
         //
     }
@@ -75,10 +74,10 @@ class PrestataireController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Prestataire  $prestataire
+     * @param  \App\Service  $service
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Prestataire $prestataire)
+    public function destroy(Service $service)
     {
         //
     }

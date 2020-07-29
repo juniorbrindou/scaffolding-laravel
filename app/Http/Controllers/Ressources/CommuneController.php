@@ -1,11 +1,10 @@
 <?php
+namespace App\Http\Controllers\Ressources;
 
-namespace App\Http\Controllers;
-
-use App\Quartier;
+use App\Commune;
 use Illuminate\Http\Request;
 
-class QuartierController extends Controller
+class CommuneController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +40,10 @@ class QuartierController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Quartier  $quartier
+     * @param  \App\Commune  $commune
      * @return \Illuminate\Http\Response
      */
-    public function show(Quartier $quartier)
+    public function show(Commune $commune)
     {
         //
     }
@@ -52,10 +51,10 @@ class QuartierController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Quartier  $quartier
+     * @param  \App\Commune  $commune
      * @return \Illuminate\Http\Response
      */
-    public function edit(Quartier $quartier)
+    public function edit(Commune $commune)
     {
         //
     }
@@ -64,10 +63,10 @@ class QuartierController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Quartier  $quartier
+     * @param  \App\Commune  $commune
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Quartier $quartier)
+    public function update(Request $request, Commune $commune)
     {
         //
     }
@@ -75,10 +74,10 @@ class QuartierController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Quartier  $quartier
+     * @param  \App\Commune  $commune
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Quartier $quartier)
+    public function destroy(Commune $commune)
     {
         //
     }
