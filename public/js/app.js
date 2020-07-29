@@ -64887,6 +64887,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -66011,6 +66013,7 @@ var render = function() {
               return _c(
                 "tr",
                 {
+                  key: user,
                   on: {
                     click: function($event) {
                       return _vm.editUser(user.id)
@@ -66052,7 +66055,7 @@ var render = function() {
                   _c(
                     "td",
                     _vm._l(user.roles, function(role, index) {
-                      return _c("span", [
+                      return _c("span", { key: role }, [
                         _vm._v("\n              " + _vm._s(role.name)),
                         index + 1 < user.roles.length
                           ? _c("span", [_vm._v(", ")])
@@ -66136,6 +66139,7 @@ var render = function() {
                             return _c(
                               "li",
                               {
+                                key: page,
                                 staticClass: "page-item",
                                 class: {
                                   active:
@@ -67597,7 +67601,7 @@ var render = function() {
               return _c(
                 "tr",
                 {
-                  key: _vm.roles,
+                  key: role,
                   on: {
                     click: function($event) {
                       return _vm.editRole(role.id)
@@ -67754,6 +67758,7 @@ var render = function() {
                             return _c(
                               "li",
                               {
+                                key: page,
                                 staticClass: "page-item",
                                 class: {
                                   active:
@@ -68195,85 +68200,93 @@ var render = function() {
                   "form",
                   { staticClass: "form-horizontal" },
                   _vm._l(_vm.role.modulesPermissions, function(module) {
-                    return _c("div", { staticClass: "form-group row" }, [
-                      _c("label", { staticClass: "col-md-3" }, [
-                        _c("strong", [_vm._v(_vm._s(module.display_name))])
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        { staticClass: "col-md-9" },
-                        _vm._l(module.permissions, function(permission) {
-                          return _c("div", { staticClass: "clearfix" }, [
-                            _c("span", [
-                              _vm._v(_vm._s(permission.display_name))
-                            ]),
-                            _vm._v(" "),
-                            _c(
-                              "label",
-                              {
-                                staticClass:
-                                  "switch switch-pill switch-outline-success-alt float-right"
-                              },
+                    return _c(
+                      "div",
+                      { key: module, staticClass: "form-group row" },
+                      [
+                        _c("label", { staticClass: "col-md-3" }, [
+                          _c("strong", [_vm._v(_vm._s(module.display_name))])
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "col-md-9" },
+                          _vm._l(module.permissions, function(permission) {
+                            return _c(
+                              "div",
+                              { key: permission, staticClass: "clearfix" },
                               [
-                                _c("input", {
-                                  directives: [
-                                    {
-                                      name: "model",
-                                      rawName: "v-model",
-                                      value: permission.allow,
-                                      expression: "permission.allow"
-                                    }
-                                  ],
-                                  staticClass: "switch-input",
-                                  attrs: { type: "checkbox" },
-                                  domProps: {
-                                    checked: Array.isArray(permission.allow)
-                                      ? _vm._i(permission.allow, null) > -1
-                                      : permission.allow
-                                  },
-                                  on: {
-                                    change: function($event) {
-                                      var $$a = permission.allow,
-                                        $$el = $event.target,
-                                        $$c = $$el.checked ? true : false
-                                      if (Array.isArray($$a)) {
-                                        var $$v = null,
-                                          $$i = _vm._i($$a, $$v)
-                                        if ($$el.checked) {
-                                          $$i < 0 &&
-                                            _vm.$set(
-                                              permission,
-                                              "allow",
-                                              $$a.concat([$$v])
-                                            )
-                                        } else {
-                                          $$i > -1 &&
-                                            _vm.$set(
-                                              permission,
-                                              "allow",
-                                              $$a
-                                                .slice(0, $$i)
-                                                .concat($$a.slice($$i + 1))
-                                            )
-                                        }
-                                      } else {
-                                        _vm.$set(permission, "allow", $$c)
-                                      }
-                                    }
-                                  }
-                                }),
+                                _c("span", [
+                                  _vm._v(_vm._s(permission.display_name))
+                                ]),
                                 _vm._v(" "),
-                                _c("span", { staticClass: "switch-slider" })
+                                _c(
+                                  "label",
+                                  {
+                                    staticClass:
+                                      "switch switch-pill switch-outline-success-alt float-right"
+                                  },
+                                  [
+                                    _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value: permission.allow,
+                                          expression: "permission.allow"
+                                        }
+                                      ],
+                                      staticClass: "switch-input",
+                                      attrs: { type: "checkbox" },
+                                      domProps: {
+                                        checked: Array.isArray(permission.allow)
+                                          ? _vm._i(permission.allow, null) > -1
+                                          : permission.allow
+                                      },
+                                      on: {
+                                        change: function($event) {
+                                          var $$a = permission.allow,
+                                            $$el = $event.target,
+                                            $$c = $$el.checked ? true : false
+                                          if (Array.isArray($$a)) {
+                                            var $$v = null,
+                                              $$i = _vm._i($$a, $$v)
+                                            if ($$el.checked) {
+                                              $$i < 0 &&
+                                                _vm.$set(
+                                                  permission,
+                                                  "allow",
+                                                  $$a.concat([$$v])
+                                                )
+                                            } else {
+                                              $$i > -1 &&
+                                                _vm.$set(
+                                                  permission,
+                                                  "allow",
+                                                  $$a
+                                                    .slice(0, $$i)
+                                                    .concat($$a.slice($$i + 1))
+                                                )
+                                            }
+                                          } else {
+                                            _vm.$set(permission, "allow", $$c)
+                                          }
+                                        }
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("span", { staticClass: "switch-slider" })
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c("hr")
                               ]
-                            ),
-                            _vm._v(" "),
-                            _c("hr")
-                          ])
-                        }),
-                        0
-                      )
-                    ])
+                            )
+                          }),
+                          0
+                        )
+                      ]
+                    )
                   }),
                   0
                 )
@@ -68844,83 +68857,93 @@ var render = function() {
                 "form",
                 { staticClass: "form-horizontal" },
                 _vm._l(_vm.role.modulesPermissions, function(module) {
-                  return _c("div", { staticClass: "form-group row" }, [
-                    _c("label", { staticClass: "col-md-3" }, [
-                      _c("strong", [_vm._v(_vm._s(module.display_name))])
-                    ]),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "col-md-9" },
-                      _vm._l(module.permissions, function(permission) {
-                        return _c("div", { staticClass: "clearfix" }, [
-                          _c("span", [_vm._v(_vm._s(permission.display_name))]),
-                          _vm._v(" "),
-                          _c(
-                            "label",
-                            {
-                              staticClass:
-                                "switch switch-pill switch-outline-success-alt float-right"
-                            },
+                  return _c(
+                    "div",
+                    { key: module, staticClass: "form-group row" },
+                    [
+                      _c("label", { staticClass: "col-md-3" }, [
+                        _c("strong", [_vm._v(_vm._s(module.display_name))])
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "col-md-9" },
+                        _vm._l(module.permissions, function(permission) {
+                          return _c(
+                            "div",
+                            { key: permission, staticClass: "clearfix" },
                             [
-                              _c("input", {
-                                directives: [
-                                  {
-                                    name: "model",
-                                    rawName: "v-model",
-                                    value: permission.allow,
-                                    expression: "permission.allow"
-                                  }
-                                ],
-                                staticClass: "switch-input",
-                                attrs: { type: "checkbox" },
-                                domProps: {
-                                  checked: Array.isArray(permission.allow)
-                                    ? _vm._i(permission.allow, null) > -1
-                                    : permission.allow
-                                },
-                                on: {
-                                  change: function($event) {
-                                    var $$a = permission.allow,
-                                      $$el = $event.target,
-                                      $$c = $$el.checked ? true : false
-                                    if (Array.isArray($$a)) {
-                                      var $$v = null,
-                                        $$i = _vm._i($$a, $$v)
-                                      if ($$el.checked) {
-                                        $$i < 0 &&
-                                          _vm.$set(
-                                            permission,
-                                            "allow",
-                                            $$a.concat([$$v])
-                                          )
-                                      } else {
-                                        $$i > -1 &&
-                                          _vm.$set(
-                                            permission,
-                                            "allow",
-                                            $$a
-                                              .slice(0, $$i)
-                                              .concat($$a.slice($$i + 1))
-                                          )
-                                      }
-                                    } else {
-                                      _vm.$set(permission, "allow", $$c)
-                                    }
-                                  }
-                                }
-                              }),
+                              _c("span", [
+                                _vm._v(_vm._s(permission.display_name))
+                              ]),
                               _vm._v(" "),
-                              _c("span", { staticClass: "switch-slider" })
+                              _c(
+                                "label",
+                                {
+                                  staticClass:
+                                    "switch switch-pill switch-outline-success-alt float-right"
+                                },
+                                [
+                                  _c("input", {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value: permission.allow,
+                                        expression: "permission.allow"
+                                      }
+                                    ],
+                                    staticClass: "switch-input",
+                                    attrs: { type: "checkbox" },
+                                    domProps: {
+                                      checked: Array.isArray(permission.allow)
+                                        ? _vm._i(permission.allow, null) > -1
+                                        : permission.allow
+                                    },
+                                    on: {
+                                      change: function($event) {
+                                        var $$a = permission.allow,
+                                          $$el = $event.target,
+                                          $$c = $$el.checked ? true : false
+                                        if (Array.isArray($$a)) {
+                                          var $$v = null,
+                                            $$i = _vm._i($$a, $$v)
+                                          if ($$el.checked) {
+                                            $$i < 0 &&
+                                              _vm.$set(
+                                                permission,
+                                                "allow",
+                                                $$a.concat([$$v])
+                                              )
+                                          } else {
+                                            $$i > -1 &&
+                                              _vm.$set(
+                                                permission,
+                                                "allow",
+                                                $$a
+                                                  .slice(0, $$i)
+                                                  .concat($$a.slice($$i + 1))
+                                              )
+                                          }
+                                        } else {
+                                          _vm.$set(permission, "allow", $$c)
+                                        }
+                                      }
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("span", { staticClass: "switch-slider" })
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c("hr")
                             ]
-                          ),
-                          _vm._v(" "),
-                          _c("hr")
-                        ])
-                      }),
-                      0
-                    )
-                  ])
+                          )
+                        }),
+                        0
+                      )
+                    ]
+                  )
                 }),
                 0
               )
@@ -68966,7 +68989,10 @@ var render = function() {
                 _vm._l(_vm.role.users, function(user) {
                   return _c(
                     "a",
-                    { attrs: { href: "/users/" + user.id + "/edit" } },
+                    {
+                      key: user,
+                      attrs: { href: "/users/" + user.id + "/edit" }
+                    },
                     [
                       _c(
                         "li",
