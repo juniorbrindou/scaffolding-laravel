@@ -1,9 +1,9 @@
 <template>
   <div class="container">
     <div class="card-header px-0 mt-2 bg-transparent clearfix">
-      <h4 class="float-left pt-2">Users</h4>
+      <h4 class="float-left pt-2">Villes</h4>
       <div class="card-header-actions mr-1">
-        <a class="btn btn-success" href="/users/create">Nouvel Utilisateur</a>
+        <a class="btn btn-success" href="/users/create">Nouvelle Ville</a>
       </div>
     </div>
     <div class="card-body px-0">
@@ -38,7 +38,7 @@
               <i class="mr-1 fas" :class="{'fa-long-arrow-alt-down': filters.orderBy.column == 'id' && filters.orderBy.direction == 'asc', 'fa-long-arrow-alt-up': filters.orderBy.column == 'id' && filters.orderBy.direction == 'desc'}"></i>
             </th>
             <th>
-              <a href="#" class="text-dark" @click.prevent="sort('name')">User</a>
+              <a href="#" class="text-dark" @click.prevent="sort('name')">Ville</a>
               <i class="mr-1 fas" :class="{'fa-long-arrow-alt-down': filters.orderBy.column == 'name' && filters.orderBy.direction == 'asc', 'fa-long-arrow-alt-up': filters.orderBy.column == 'name' && filters.orderBy.direction == 'desc'}"></i>
             </th>
             <th>Roles</th>
@@ -140,10 +140,10 @@ export default {
     }
   },
   mounted () {
-    if (localStorage.getItem("filtersTableUsers")) {
-      this.filters = JSON.parse(localStorage.getItem("filtersTableUsers"))
+    if (localStorage.getItem("indexTableVilles")) {
+      this.filters = JSON.parse(localStorage.getItem("indexTableVilles"))
     } else {
-      localStorage.setItem("filtersTableUsers", this.filters);
+      localStorage.setItem("indexTableVilles", this.filters);
     }
     this.getUsers()
   },
@@ -152,7 +152,7 @@ export default {
       this.loading = true
       this.users = []
 
-      localStorage.setItem("filtersTableUsers", JSON.stringify(this.filters));
+      localStorage.setItem("indexTableVilles", JSON.stringify(this.filters));
 
       axios.post(`/api/users/filter?page=${this.filters.pagination.current_page}`, this.filters)
       .then(response => {

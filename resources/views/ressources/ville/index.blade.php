@@ -2,5 +2,5 @@
 
 @section('content')
 <h1>Villes</h1>
-<?php dd($villes); ?>
+villes-index
 @endsection

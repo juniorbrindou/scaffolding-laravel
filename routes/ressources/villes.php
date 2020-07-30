@@ -9,8 +9,8 @@ Route::middleware('auth')->group(function () {
         // views
         Route::group(['prefix' => 'villes'], function() {
             Route::view('/', 'ressources.ville.index');
-            Route::view('/create', 'ville.create');
-            Route::view('/{ville}/edit', 'ville.edit');
+            Route::view('/create', 'ressources.ville.create');
+            Route::view('/{ville}/edit', 'ressources.ville.edit');
         });
 
         // api
