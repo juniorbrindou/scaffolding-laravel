@@ -8,14 +8,14 @@ Route::middleware('auth')->group(function () {
 
         // views
         Route::group(['prefix' => 'villes'], function() {
-            Route::view('/villes-liste', 'ville.index');
+            Route::view('/', 'ressources.ville.index');
             Route::view('/create', 'ville.create');
             Route::view('/{ville}/edit', 'ville.edit');
         });
 
         // api
         Route::group(['prefix' => 'api/villes'], function() {
-            Route::get('/getVillesListe', 'VilleController@getVillesListe');
+            Route::get('index', 'VilleController@index');
 
             // Route::get('/getUserRoles/{user}', 'UserController@getUserRoles');
             // Route::get('/count', 'UserController@count');

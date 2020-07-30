@@ -32,7 +32,7 @@
                     <i class="nav-icon icon-note"></i> Ressources <span class="icon-arrow-down"></span>
                 </a>
                 <ul class="sub-menu collapse" id="products">
-                    <li class="nav-item"><a class="nav-link" href="#">Villes</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/villes">Villes</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Communes</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Quartiers</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Domaines</a></li>

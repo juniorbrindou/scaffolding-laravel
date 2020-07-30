@@ -13,7 +13,8 @@ class VilleController extends Controller
      */
     public function index()
     {
-        //
+        $villes = Ville::all();
+        return $villes;
     }
 
     /**
