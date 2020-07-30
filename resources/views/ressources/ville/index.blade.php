@@ -1,6 +1,5 @@
 @extends('layouts.app')
 
 @section('content')
-<h1>Villes</h1>
-villes-index
+<villes-index></villes-index>
 @endsection
