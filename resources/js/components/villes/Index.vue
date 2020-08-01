@@ -15,7 +15,7 @@
                 <i class="fas fa-search"></i>
               </span>
             </div>
-            <input type="text" class="form-control" placeholder="Seach" v-model.trim="filters.search" @keyup.enter="filter">
+            <input type="text" class="form-control" placeholder="Recherche" v-model.trim="filters.search" @keyup.enter="filter">
           </div>
         </div>
         <div class="col-auto">
@@ -43,7 +43,7 @@
             </th>
             <th>Roles</th>
             <th class="d-none d-sm-table-cell">
-              <a href="#" class="text-dark" @click.prevent="sort('created_at')">Registered</a>
+              <a href="#" class="text-dark" @click.prevent="sort('created_at')">Crée Le</a>
               <i class="mr-1 fas" :class="{'fa-long-arrow-alt-down': filters.orderBy.column == 'created_at' && filters.orderBy.direction == 'asc', 'fa-long-arrow-alt-up': filters.orderBy.column == 'created_at' && filters.orderBy.direction == 'desc'}"></i>
             </th>
             <th class="d-none d-sm-table-cell"></th>
