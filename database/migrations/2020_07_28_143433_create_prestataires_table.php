@@ -32,8 +32,8 @@ class CreatePrestatairesTable extends Migration
             $table->integer('type');
             $table->string('societe')->nullable();
             $table->string('commune_travail_id')->nullable();
+            $table->boolean('active')->default(true);
 
-            $table->integer('etat')->default(0);
 
             $table->rememberToken();
             $table->timestamp('email_verified_at')->nullable();

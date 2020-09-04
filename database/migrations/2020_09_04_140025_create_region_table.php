@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCommunesTable extends Migration
+class CreateRegionTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateCommunesTable extends Migration
      */
     public function up()
     {
-        Schema::create('communes', function (Blueprint $table) {
+        Schema::create('region', function (Blueprint $table) {
             $table->increments('id');
             $table->string('libelle');
             $table->boolean('active')->default(true);
@@ -28,6 +28,6 @@ class CreateCommunesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('communes');
+        Schema::dropIfExists('region');
     }
 }

@@ -17,7 +17,7 @@ class CreateLigneTarifsTable extends Migration
             $table->increments('id');
             $table->integer('tarification_id');
             $table->integer('service_id');
-
+            $table->boolean('active')->default(true);
             $table->timestamps();
         });
     }

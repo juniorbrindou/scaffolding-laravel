@@ -16,7 +16,7 @@ class CreateDomainesTable extends Migration
         Schema::create('domaines', function (Blueprint $table) {
             $table->increments('id');
             $table->string('libelle');
-            $table->integer('etat')->default(0);
+            $table->boolean('active')->default(true);
             $table->timestamps();
         });
     }

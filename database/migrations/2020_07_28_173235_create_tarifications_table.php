@@ -15,10 +15,8 @@ class CreateTarificationsTable extends Migration
     {
         Schema::create('tarifications', function (Blueprint $table) {
             $table->increments('id');
-
             $table->integer('montant');
             $table->date('date');
-
             $table->timestamps();
         });
     }
