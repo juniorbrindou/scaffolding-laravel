@@ -1,5 +1,6 @@
 <?php
 Route::middleware('auth')->group(function () {
+
     Route::group(['namespace' => 'Profile'], function() {
 
         Route::view('/profile', 'profile.profile')->middleware('permission:read-profile');

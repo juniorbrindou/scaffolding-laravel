@@ -45,7 +45,6 @@ class CreateSituationsTable extends Migration
             $table->boolean('active')->default(true);
             $table->timestamps();
         });
-
     }
 
     // suppression de toutes les tables migrate:rollback

@@ -6,11 +6,6 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreatePrestatairesTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('prestataires', function (Blueprint $table) {
@@ -24,7 +19,6 @@ class CreatePrestatairesTable extends Migration
             $table->string('ville_naiss_id');
             $table->integer('quartier_habit_id')->nullable();
             $table->string('password');
-
             $table->integer('type_carte_id');
             $table->string('carte');
             $table->string('diplome');
@@ -33,19 +27,12 @@ class CreatePrestatairesTable extends Migration
             $table->string('societe')->nullable();
             $table->string('commune_travail_id')->nullable();
             $table->boolean('active')->default(true);
-
-
             $table->rememberToken();
             $table->timestamp('email_verified_at')->nullable();
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('prestataires');
