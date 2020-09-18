@@ -29,3 +29,4 @@ require __DIR__ . '/roles/roles.php';
 require __DIR__ . '/roles/permissions.php';
 require __DIR__ . '/modules/modules.php';
 require __DIR__ . '/ressources/villes.php';
+require __DIR__ . '/ressources/communes.php';
