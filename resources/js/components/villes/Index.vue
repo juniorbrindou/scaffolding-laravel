@@ -3,7 +3,7 @@
     <div class="card-header px-0 mt-2 bg-transparent clearfix">
       <h4 class="float-left pt-2">Villes</h4>
       <div class="card-header-actions mr-1">
-        <a class="btn btn-success" href="/users/create">Nouvelle Ville</a>
+        <a class="btn btn-success" href="/villes/create">Nouvelle Ville</a>
       </div>
     </div>
     <div class="card-body px-0">
@@ -30,55 +30,52 @@
           </multiselect>
         </div>
       </div>
+
+
+
       <table class="table table-hover">
         <thead>
           <tr>
-            <th class="d-none d-sm-table-cell">
-              <a href="#" class="text-dark" @click.prevent="sort('id')">ID</a>
-              <i class="mr-1 fas" :class="{'fa-long-arrow-alt-down': filters.orderBy.column == 'id' && filters.orderBy.direction == 'asc', 'fa-long-arrow-alt-up': filters.orderBy.column == 'id' && filters.orderBy.direction == 'desc'}"></i>
-            </th>
-            <th>
-              <a href="#" class="text-dark" @click.prevent="sort('name')">Ville</a>
-              <i class="mr-1 fas" :class="{'fa-long-arrow-alt-down': filters.orderBy.column == 'name' && filters.orderBy.direction == 'asc', 'fa-long-arrow-alt-up': filters.orderBy.column == 'name' && filters.orderBy.direction == 'desc'}"></i>
-            </th>
-            <th>Roles</th>
+            <!-- id -->
+              <th class="d-none d-sm-table-cell">
+                <a href="#" class="text-dark" @click.prevent="sort('id')">ID</a>
+                <i class="mr-1 fas" :class="{'fa-long-arrow-alt-down': filters.orderBy.column == 'id' && filters.orderBy.direction == 'asc', 'fa-long-arrow-alt-up': filters.orderBy.column == 'id' && filters.orderBy.direction == 'desc'}"></i>
+              </th>
+
+            <!-- villes -->
+            <th>Villes</th>
+
+            <!-- crée le -->
             <th class="d-none d-sm-table-cell">
               <a href="#" class="text-dark" @click.prevent="sort('created_at')">Crée Le</a>
               <i class="mr-1 fas" :class="{'fa-long-arrow-alt-down': filters.orderBy.column == 'created_at' && filters.orderBy.direction == 'asc', 'fa-long-arrow-alt-up': filters.orderBy.column == 'created_at' && filters.orderBy.direction == 'desc'}"></i>
             </th>
+
+            <!-- button editer -->
             <th class="d-none d-sm-table-cell"></th>
           </tr>
         </thead>
+
         <tbody>
-          <tr v-for="user in users" @click="editUser(user.id)" v-bind:key="user">
-            <td class="d-none d-sm-table-cell">{{user.id}}</td>
+          <tr v-for="ville in villes" @click="editVille(ville.id)" v-bind:key="ville">
+            <!-- id -->
+            <td class="d-none d-sm-table-cell">1</td>
+
+            <!-- Villes -->
             <td>
-              <div class="media">
-                <div class="avatar float-left mr-3">
-                  <img class="img-avatar" :src="user.avatar_url">
-                  <span class="avatar-status badge-success"></span>
-                </div>
-                <div class="media-body">
-                  <div>{{user.name}}</div>
-                  <div class="small text-muted">
-                    {{user.email}}
-                  </div>
-                </div>
-              </div>
+              <span>nom de ville 1<span>, </span></span>
             </td>
-            <td>
-              <span v-for="(role, index) in user.roles" v-bind:key="role">
-                {{role.name}}<span v-if="index+1 < user.roles.length">, </span>
-              </span>
-            </td>
+
+            <!--  -->
             <td class="d-none d-sm-table-cell">
-              <small>{{user.created_at | moment("LL")}}</small> - <small class="text-muted">{{user.created_at | moment("LT")}}</small>
+              <small>date</small> - <small class="text-muted">heure</small>
             </td>
             <td class="d-none d-sm-table-cell">
               <a href="#" class="text-muted"><i class="fas fa-pencil-alt"></i></a>
             </td>
           </tr>
         </tbody>
+
       </table>
       <div class="row" v-if='!loading && filters.pagination.total > 0'>
         <div class="col pt-2">
@@ -101,12 +98,12 @@
           </nav>
         </div>
       </div>
-      <div class="no-items-found text-center mt-5" v-if="!loading && !users.length > 0">
+      <div class="no-items-found text-center mt-5" v-if="!loading && !villes.length > 0">
         <i class="icon-magnifier fa-3x text-muted"></i>
         <p class="mb-0 mt-3"><strong>Could not find any items</strong></p>
         <p class="text-muted">Try changing the filters or add a new one</p>
-        <a class="btn btn-success" href="/users/create" role="button">
-          <i class="fa fa-plus"></i>&nbsp; New User
+        <a class="btn btn-success" href="/villes/create" role="button">
+          <i class="fa fa-plus"></i>&nbsp; Ajouter une ville
         </a>
       </div>
       <content-placeholders v-if="loading">
@@ -120,7 +117,7 @@
 export default {
   data () {
     return {
-      users: [],
+      villes: [],
       filters: {
         pagination: {
           from: 0,
@@ -145,35 +142,35 @@ export default {
     } else {
       localStorage.setItem("indexTableVilles", this.filters);
     }
-    this.getUsers()
+    this.getVilles()
   },
   methods: {
-    getUsers () {
+    getVilles () {
       this.loading = true
-      this.users = []
+      this.villes = []
 
       localStorage.setItem("indexTableVilles", JSON.stringify(this.filters));
 
-      axios.post(`/api/users/filter?page=${this.filters.pagination.current_page}`, this.filters)
+      axios.post(`/api/villes/filter?page=${this.filters.pagination.current_page}`, this.filters)
       .then(response => {
-        this.users = response.data.data
+        this.villes = response.data.data
         delete response.data.data
         this.filters.pagination = response.data
         this.loading = false
       })
     },
-    editUser (userId) {
-      location.href = `/users/${userId}/edit`
+    editVille (villeId) {
+      location.href = `/villes/${villeId}/edit`
     },
     // filters
     filter() {
       this.filters.pagination.current_page = 1
-      this.getUsers()
+      this.getVilles()
     },
     changeSize (perPage) {
       this.filters.pagination.current_page = 1
       this.filters.pagination.per_page = perPage
-      this.getUsers()
+      this.getVilles()
     },
     sort (column) {
       if(column == this.filters.orderBy.column) {
@@ -183,11 +180,11 @@ export default {
         this.filters.orderBy.direction = 'asc'
       }
 
-      this.getUsers()
+      this.getVilles()
     },
     changePage (page) {
       this.filters.pagination.current_page = page
-      this.getUsers()
+      this.getVilles()
     }
   }
 }

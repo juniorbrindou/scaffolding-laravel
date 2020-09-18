@@ -17,6 +17,8 @@
                 </a>
             </li>
             @endcan
+
+            <!-- les roles  -->
             @can('read-roles')
             <li class="nav-item">
                 <a class="nav-link" href="/roles">

@@ -69274,14 +69274,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      users: [],
+      villes: [],
       filters: {
         pagination: {
           from: 0,
@@ -69306,38 +69303,38 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     } else {
       localStorage.setItem("indexTableVilles", this.filters);
     }
-    this.getUsers();
+    this.getVilles();
   },
 
   methods: {
-    getUsers: function getUsers() {
+    getVilles: function getVilles() {
       var _this = this;
 
       this.loading = true;
-      this.users = [];
+      this.villes = [];
 
       localStorage.setItem("indexTableVilles", JSON.stringify(this.filters));
 
-      axios.post('/api/users/filter?page=' + this.filters.pagination.current_page, this.filters).then(function (response) {
-        _this.users = response.data.data;
+      axios.post('/api/villes/filter?page=' + this.filters.pagination.current_page, this.filters).then(function (response) {
+        _this.villes = response.data.data;
         delete response.data.data;
         _this.filters.pagination = response.data;
         _this.loading = false;
       });
     },
-    editUser: function editUser(userId) {
-      location.href = '/users/' + userId + '/edit';
+    editVille: function editVille(villeId) {
+      location.href = '/villes/' + villeId + '/edit';
     },
 
     // filters
     filter: function filter() {
       this.filters.pagination.current_page = 1;
-      this.getUsers();
+      this.getVilles();
     },
     changeSize: function changeSize(perPage) {
       this.filters.pagination.current_page = 1;
       this.filters.pagination.per_page = perPage;
-      this.getUsers();
+      this.getVilles();
     },
     sort: function sort(column) {
       if (column == this.filters.orderBy.column) {
@@ -69347,11 +69344,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         this.filters.orderBy.direction = 'asc';
       }
 
-      this.getUsers();
+      this.getVilles();
     },
     changePage: function changePage(page) {
       this.filters.pagination.current_page = page;
-      this.getUsers();
+      this.getVilles();
     }
   }
 });
@@ -69480,36 +69477,7 @@ var render = function() {
                 })
               ]),
               _vm._v(" "),
-              _c("th", [
-                _c(
-                  "a",
-                  {
-                    staticClass: "text-dark",
-                    attrs: { href: "#" },
-                    on: {
-                      click: function($event) {
-                        $event.preventDefault()
-                        return _vm.sort("name")
-                      }
-                    }
-                  },
-                  [_vm._v("Ville")]
-                ),
-                _vm._v(" "),
-                _c("i", {
-                  staticClass: "mr-1 fas",
-                  class: {
-                    "fa-long-arrow-alt-down":
-                      _vm.filters.orderBy.column == "name" &&
-                      _vm.filters.orderBy.direction == "asc",
-                    "fa-long-arrow-alt-up":
-                      _vm.filters.orderBy.column == "name" &&
-                      _vm.filters.orderBy.direction == "desc"
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("th", [_vm._v("Roles")]),
+              _c("th", [_vm._v("Villes")]),
               _vm._v(" "),
               _c("th", { staticClass: "d-none d-sm-table-cell" }, [
                 _c(
@@ -69546,73 +69514,27 @@ var render = function() {
           _vm._v(" "),
           _c(
             "tbody",
-            _vm._l(_vm.users, function(user) {
+            _vm._l(_vm.villes, function(ville) {
               return _c(
                 "tr",
                 {
-                  key: user,
+                  key: ville,
                   on: {
                     click: function($event) {
-                      return _vm.editUser(user.id)
+                      return _vm.editVille(ville.id)
                     }
                   }
                 },
                 [
                   _c("td", { staticClass: "d-none d-sm-table-cell" }, [
-                    _vm._v(_vm._s(user.id))
+                    _vm._v("1")
                   ]),
                   _vm._v(" "),
-                  _c("td", [
-                    _c("div", { staticClass: "media" }, [
-                      _c("div", { staticClass: "avatar float-left mr-3" }, [
-                        _c("img", {
-                          staticClass: "img-avatar",
-                          attrs: { src: user.avatar_url }
-                        }),
-                        _vm._v(" "),
-                        _c("span", {
-                          staticClass: "avatar-status badge-success"
-                        })
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "media-body" }, [
-                        _c("div", [_vm._v(_vm._s(user.name))]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "small text-muted" }, [
-                          _vm._v(
-                            "\n                  " +
-                              _vm._s(user.email) +
-                              "\n                "
-                          )
-                        ])
-                      ])
-                    ])
-                  ]),
+                  _vm._m(1, true),
                   _vm._v(" "),
-                  _c(
-                    "td",
-                    _vm._l(user.roles, function(role, index) {
-                      return _c("span", { key: role }, [
-                        _vm._v("\n              " + _vm._s(role.name)),
-                        index + 1 < user.roles.length
-                          ? _c("span", [_vm._v(", ")])
-                          : _vm._e()
-                      ])
-                    }),
-                    0
-                  ),
+                  _vm._m(2, true),
                   _vm._v(" "),
-                  _c("td", { staticClass: "d-none d-sm-table-cell" }, [
-                    _c("small", [
-                      _vm._v(_vm._s(_vm._f("moment")(user.created_at, "LL")))
-                    ]),
-                    _vm._v(" - "),
-                    _c("small", { staticClass: "text-muted" }, [
-                      _vm._v(_vm._s(_vm._f("moment")(user.created_at, "LT")))
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _vm._m(1, true)
+                  _vm._m(3, true)
                 ]
               )
             }),
@@ -69744,17 +69666,17 @@ var render = function() {
             ])
           : _vm._e(),
         _vm._v(" "),
-        !_vm.loading && !_vm.users.length > 0
+        !_vm.loading && !_vm.villes.length > 0
           ? _c("div", { staticClass: "no-items-found text-center mt-5" }, [
               _c("i", { staticClass: "icon-magnifier fa-3x text-muted" }),
               _vm._v(" "),
-              _vm._m(2),
+              _vm._m(4),
               _vm._v(" "),
               _c("p", { staticClass: "text-muted" }, [
                 _vm._v("Try changing the filters or add a new one")
               ]),
               _vm._v(" "),
-              _vm._m(3)
+              _vm._m(5)
             ])
           : _vm._e(),
         _vm._v(" "),
@@ -69782,13 +69704,31 @@ var staticRenderFns = [
             "a",
             {
               staticClass: "btn btn-success",
-              attrs: { href: "/users/create" }
+              attrs: { href: "/villes/create" }
             },
             [_vm._v("Nouvelle Ville")]
           )
         ])
       ]
     )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("span", [_vm._v("nom de ville 1"), _c("span", [_vm._v(", ")])])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", { staticClass: "d-none d-sm-table-cell" }, [
+      _c("small", [_vm._v("date")]),
+      _vm._v(" - "),
+      _c("small", { staticClass: "text-muted" }, [_vm._v("heure")])
+    ])
   },
   function() {
     var _vm = this
@@ -69816,9 +69756,12 @@ var staticRenderFns = [
       "a",
       {
         staticClass: "btn btn-success",
-        attrs: { href: "/users/create", role: "button" }
+        attrs: { href: "/villes/create", role: "button" }
       },
-      [_c("i", { staticClass: "fa fa-plus" }), _vm._v("  New User\n      ")]
+      [
+        _c("i", { staticClass: "fa fa-plus" }),
+        _vm._v("  Ajouter une ville\n      ")
+      ]
     )
   }
 ]
