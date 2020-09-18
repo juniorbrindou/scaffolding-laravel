@@ -21,19 +21,13 @@ import VueContentPlaceholders from 'vue-content-placeholders'
 Vue.use(require('vue-moment'));
 Vue.use(Toasted)
 Vue.toasted.register('error', message => message, {
-    position : 'bottom-center',
-    duration : 1000
+	position : 'bottom-center',
+	duration : 1000
 })
 Vue.use(VueClip)
 Vue.component('multiselect', Multiselect)
 Vue.use(VueContentPlaceholders)
 
-
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
 
  // Layout
  Vue.component('sidebar', require('./components/layout/Sidebar.vue'));
@@ -47,20 +41,34 @@ Vue.component('profile', require('./components/profile/Profile.vue'));
 Vue.component('profile-password', require('./components/profile/Password.vue'));
 
 // Users
-Vue.component('users-index', require('./components/users/Index.vue'));
-Vue.component('users-create', require('./components/users/Create.vue'));
-Vue.component('users-edit', require('./components/users/Edit.vue'));
+	Vue.component('users-index', require('./components/users/Index.vue'));
+	Vue.component('users-create', require('./components/users/Create.vue'));
+	Vue.component('users-edit', require('./components/users/Edit.vue'));
 
 // Roles
-Vue.component('roles-index', require('./components/roles/Index.vue'));
-Vue.component('roles-create', require('./components/roles/Create.vue'));
-Vue.component('roles-edit', require('./components/roles/Edit.vue'));
+	Vue.component('roles-index', require('./components/roles/Index.vue'));
+	Vue.component('roles-create', require('./components/roles/Create.vue'));
+	Vue.component('roles-edit', require('./components/roles/Edit.vue'));
 
-// villes
-Vue.component('villes-index', require('./components/villes/Index.vue'));
-
+// ressources
+	// regions
+	Vue.component('villes-index', require('./components/regions/Index.vue'));
+	Vue.component('villes-index', require('./components/regions/Create.vue'));
+	Vue.component('villes-index', require('./components/regions/Edit.vue'));
+	// villes
+	Vue.component('villes-index', require('./components/villes/Index.vue'));
+	Vue.component('villes-index', require('./components/villes/Create.vue'));
+	Vue.component('villes-index', require('./components/villes/Edit.vue'));
+	// communes
+	Vue.component('villes-index', require('./components/communes/Index.vue'));
+	Vue.component('villes-index', require('./components/communes/Create.vue'));
+	Vue.component('villes-index', require('./components/communes/Edit.vue'));
+	// quartiers
+	Vue.component('villes-index', require('./components/quartiers/Index.vue'));
+	Vue.component('villes-index', require('./components/quartiers/Create.vue'));
+	Vue.component('villes-index', require('./components/quartiers/Edit.vue'));
 
 
 const app = new Vue({
-    el: '#app'
+	el: '#app'
 });
