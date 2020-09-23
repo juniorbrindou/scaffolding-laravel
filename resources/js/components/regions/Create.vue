@@ -8,22 +8,16 @@
             <a class="btn btn-primary" href="#" :disabled="submiting" @click.prevent="create">
               <i class="fas fa-spinner fa-spin" v-if="submiting"></i>
               <i class="fas fa-check" v-else></i>
-              <span class="ml-1">Save</span>
+              <span class="ml-1">Enregistrer</span>
             </a>
           </div>
         </div>
         <div class="card-body px-0">
 
           <div class="form-group">
-            <label>Full Name</label>
-            <input type="text" class="form-control" :class="{'is-invalid': errors.name}" v-model="region.name" placeholder="John Doe">
+            <label>Nom de Commune</label>
+            <input type="text" class="form-control" :class="{'is-invalid': errors.name}" v-model="region.name" placeholder="Abidjan">
             <div class="invalid-feedback" v-if="errors.name">{{errors.name[0]}}</div>
-          </div>
-
-          <div class="form-group">
-            <label>Email</label>
-            <input type="email" class="form-control" :class="{'is-invalid': errors.email}" v-model="region.email" placeholder="john@modulr.io">
-            <div class="invalid-feedback" v-if="errors.email">{{errors.email[0]}}</div>
           </div>
 
         </div>
