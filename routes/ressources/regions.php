@@ -14,18 +14,18 @@ Route::middleware('auth')->group(function () {
         });
 
         // api
-        Route::group(['prefix' => 'api/regions'], function() {
-            Route::get('index', 'RegionController@all');
+        // Route::group(['prefix' => 'api/regions'], function() {
+            // Route::get('index', 'RegionController@all');
 
             // Route::get('/getUserRoles/{user}', 'UserController@getUserRoles');
-            Route::get('/count', 'RegionController@count');
-            Route::post('/filter', 'RegionController@filter');
+            // Route::get('/count', 'RegionController@count');
+            // Route::post('/filter', 'RegionController@filter');
 
             // Route::get('/{user}', 'UserController@show')->middleware('permission:read-users');
             // Route::post('/store', 'UserController@store')->middleware('permission:create-users');
             // Route::put('/update/{user}', 'UserController@update')->middleware('permission:update-users');
             // Route::delete('/{user}', 'UserController@destroy')->middleware('permission:delete-users');
-        });
+        // });
     });
 
 });

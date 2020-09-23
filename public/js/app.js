@@ -69863,21 +69863,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -69908,15 +69893,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           _this.submiting = false;
         });
       }
-    },
-    getRoles: function getRoles() {
-      var _this2 = this;
-
-      axios.get('/api/roles/all').then(function (response) {
-        _this2.roles = response.data;
-      }).catch(function (error) {
-        _this2.errors = error.response.data.errors;
-      });
     }
   }
 });
@@ -70030,73 +70006,7 @@ var render = function() {
                   _vm._v(_vm._s(_vm.errors.email[0]))
                 ])
               : _vm._e()
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form-group" }, [
-            _c("label", [_vm._v("Password")]),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.region.password,
-                  expression: "region.password"
-                }
-              ],
-              staticClass: "form-control",
-              class: { "is-invalid": _vm.errors.password },
-              attrs: { type: "password" },
-              domProps: { value: _vm.region.password },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.region, "password", $event.target.value)
-                }
-              }
-            }),
-            _vm._v(" "),
-            _vm.errors.password
-              ? _c("div", { staticClass: "invalid-feedback" }, [
-                  _vm._v(_vm._s(_vm.errors.password[0]))
-                ])
-              : _vm._e()
-          ]),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "form-group" },
-            [
-              _c("label", [_vm._v("Roles")]),
-              _vm._v(" "),
-              _c("multiselect", {
-                class: { "border border-danger rounded": _vm.errors.roles },
-                attrs: {
-                  options: _vm.roles,
-                  multiple: true,
-                  openDirection: "bottom",
-                  "track-by": "id",
-                  label: "display_name"
-                },
-                model: {
-                  value: _vm.region.roles,
-                  callback: function($$v) {
-                    _vm.$set(_vm.region, "roles", $$v)
-                  },
-                  expression: "region.roles"
-                }
-              }),
-              _vm._v(" "),
-              _vm.errors.roles
-                ? _c("small", { staticClass: "form-text text-danger" }, [
-                    _vm._v(_vm._s(_vm.errors.roles[0]))
-                  ])
-                : _vm._e()
-            ],
-            1
-          )
+          ])
         ])
       ])
     ])
