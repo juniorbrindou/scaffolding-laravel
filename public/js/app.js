@@ -69937,7 +69937,7 @@ var render = function() {
         _vm._v(" "),
         _c("div", { staticClass: "card-body px-0" }, [
           _c("div", { staticClass: "form-group" }, [
-            _c("label", [_vm._v("Nom de Commune")]),
+            _c("label", [_vm._v("Nom de Région")]),
             _vm._v(" "),
             _c("input", {
               directives: [

@@ -15,7 +15,7 @@
         <div class="card-body px-0">
 
           <div class="form-group">
-            <label>Nom de Commune</label>
+            <label>Nom de Région</label>
             <input type="text" class="form-control" :class="{'is-invalid': errors.name}" v-model="region.name" placeholder="Abidjan">
             <div class="invalid-feedback" v-if="errors.name">{{errors.name[0]}}</div>
           </div>
