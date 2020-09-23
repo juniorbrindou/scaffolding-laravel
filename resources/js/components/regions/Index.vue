@@ -1,9 +1,9 @@
 <template>
   <div class="container">
     <div class="card-header px-0 mt-2 bg-transparent clearfix">
-      <h4 class="float-left pt-2">Villes</h4>
+      <h4 class="float-left pt-2">Regions</h4>
       <div class="card-header-actions mr-1">
-        <a class="btn btn-success" href="/villes/create">Nouvelle Ville</a>
+        <a class="btn btn-success" href="/regions/create">Nouvelle Region</a>
       </div>
     </div>
     <div class="card-body px-0">
@@ -42,8 +42,8 @@
                 <i class="mr-1 fas" :class="{'fa-long-arrow-alt-down': filters.orderBy.column == 'id' && filters.orderBy.direction == 'asc', 'fa-long-arrow-alt-up': filters.orderBy.column == 'id' && filters.orderBy.direction == 'desc'}"></i>
               </th>
 
-            <!-- villes -->
-            <th>Villes</th>
+            <!-- regions -->
+            <th>Regions</th>
 
             <!-- crée le -->
             <th class="d-none d-sm-table-cell">
@@ -57,13 +57,13 @@
         </thead>
 
         <tbody>
-          <tr v-for="ville in villes" @click="editVille(ville.id)" v-bind:key="ville">
+          <tr v-for="region in regions" @click="editRegion(region.id)" v-bind:key="region">
             <!-- id -->
             <td class="d-none d-sm-table-cell">1</td>
 
-            <!-- Villes -->
+            <!-- Regions -->
             <td>
-              <span>nom de ville 1<span>, </span></span>
+              <span>nom de region 1<span>, </span></span>
             </td>
 
             <!--  -->
@@ -98,12 +98,12 @@
           </nav>
         </div>
       </div>
-      <div class="no-items-found text-center mt-5" v-if="!loading && !villes.length > 0">
+      <div class="no-items-found text-center mt-5" v-if="!loading && !regions.length > 0">
         <i class="icon-magnifier fa-3x text-muted"></i>
         <p class="mb-0 mt-3"><strong>Could not find any items</strong></p>
         <p class="text-muted">Try changing the filters or add a new one</p>
-        <a class="btn btn-success" href="/villes/create" role="button">
-          <i class="fa fa-plus"></i>&nbsp; Ajouter une ville
+        <a class="btn btn-success" href="/regions/create" role="button">
+          <i class="fa fa-plus"></i>&nbsp; Ajouter une region
         </a>
       </div>
       <content-placeholders v-if="loading">
@@ -117,7 +117,7 @@
 export default {
   data () {
     return {
-      villes: [],
+        regions: [],
       filters: {
         pagination: {
           from: 0,
@@ -137,40 +137,40 @@ export default {
     }
   },
   mounted () {
-    if (localStorage.getItem("indexTableVilles")) {
-      this.filters = JSON.parse(localStorage.getItem("indexTableVilles"))
+    if (localStorage.getItem("indexTableRegions")) {
+      this.filters = JSON.parse(localStorage.getItem("indexTableRegions"))
     } else {
-      localStorage.setItem("indexTableVilles", this.filters);
+      localStorage.setItem("indexTableRegions", this.filters);
     }
-    this.getVilles()
+    this.getRegions()
   },
   methods: {
-    getVilles () {
+    getRegions () {
       this.loading = true
-      this.villes = []
+      this.regions = []
 
-      localStorage.setItem("indexTableVilles", JSON.stringify(this.filters));
+      localStorage.setItem("indexTableRegions", JSON.stringify(this.filters));
 
-      axios.post(`/api/villes/filter?page=${this.filters.pagination.current_page}`, this.filters)
+      axios.post(`/api/regions/filter?page=${this.filters.pagination.current_page}`, this.filters)
       .then(response => {
-        this.villes = response.data.data
+        this.regions = response.data.data
         delete response.data.data
         this.filters.pagination = response.data
         this.loading = false
       })
     },
-    editVille (villeId) {
-      location.href = `/villes/${villeId}/edit`
+    editRegion (regionId) {
+      location.href = `/regions/${regionId}/edit`
     },
     // filters
     filter() {
       this.filters.pagination.current_page = 1
-      this.getVilles()
+      this.getRegions()
     },
     changeSize (perPage) {
       this.filters.pagination.current_page = 1
       this.filters.pagination.per_page = perPage
-      this.getVilles()
+      this.getRegions()
     },
     sort (column) {
       if(column == this.filters.orderBy.column) {
@@ -180,11 +180,11 @@ export default {
         this.filters.orderBy.direction = 'asc'
       }
 
-      this.getVilles()
+      this.getRegions()
     },
     changePage (page) {
       this.filters.pagination.current_page = page
-      this.getVilles()
+      this.getRegions()
     }
   }
 }

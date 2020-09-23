@@ -15,11 +15,11 @@ Route::middleware('auth')->group(function () {
 
         // api
         Route::group(['prefix' => 'api/regions'], function() {
-            Route::get('index', 'regionController@index');
+            Route::get('index', 'RegionController@all');
 
             // Route::get('/getUserRoles/{user}', 'UserController@getUserRoles');
-            // Route::get('/count', 'UserController@count');
-            // Route::post('/filter', 'UserController@filter')->middleware('permission:read-users');
+            Route::get('/count', 'RegionController@count');
+            Route::post('/filter', 'RegionController@filter');
 
             // Route::get('/{user}', 'UserController@show')->middleware('permission:read-users');
             // Route::post('/store', 'UserController@store')->middleware('permission:create-users');

@@ -3,7 +3,7 @@
     <div class="row justify-content-md-center">
       <div class="col-md-9 col-xl-7">
         <div class="card-header px-0 mt-2 bg-transparent clearfix">
-          <h4 class="float-left pt-2">New User</h4>
+          <h4 class="float-left pt-2">Nouvelle Region</h4>
           <div class="card-header-actions mr-1">
             <a class="btn btn-primary" href="#" :disabled="submiting" @click.prevent="create">
               <i class="fas fa-spinner fa-spin" v-if="submiting"></i>
@@ -15,23 +15,23 @@
         <div class="card-body px-0">
           <div class="form-group">
             <label>Full Name</label>
-            <input type="text" class="form-control" :class="{'is-invalid': errors.name}" v-model="user.name" placeholder="John Doe">
+            <input type="text" class="form-control" :class="{'is-invalid': errors.name}" v-model="region.name" placeholder="John Doe">
             <div class="invalid-feedback" v-if="errors.name">{{errors.name[0]}}</div>
           </div>
           <div class="form-group">
             <label>Email</label>
-            <input type="email" class="form-control" :class="{'is-invalid': errors.email}" v-model="user.email" placeholder="john@modulr.io">
+            <input type="email" class="form-control" :class="{'is-invalid': errors.email}" v-model="region.email" placeholder="john@modulr.io">
             <div class="invalid-feedback" v-if="errors.email">{{errors.email[0]}}</div>
           </div>
           <div class="form-group">
             <label>Password</label>
-            <input type="password" class="form-control" :class="{'is-invalid': errors.password}" v-model="user.password">
+            <input type="password" class="form-control" :class="{'is-invalid': errors.password}" v-model="region.password">
             <div class="invalid-feedback" v-if="errors.password">{{errors.password[0]}}</div>
           </div>
           <div class="form-group">
             <label>Roles</label>
             <multiselect
-              v-model="user.roles"
+              v-model="region.roles"
               :options="roles"
               :multiple="true"
               openDirection="bottom"
@@ -51,7 +51,7 @@
 export default {
   data () {
     return {
-      user: {
+      region: {
         roles: []
       },
       roles: [],
@@ -66,10 +66,10 @@ export default {
     create () {
       if (!this.submiting) {
         this.submiting = true
-        axios.post(`/api/users/store`, this.user)
+        axios.post(`/api/regions/store`, this.region)
         .then(response => {
-          this.$toasted.global.error('Created user!')
-          location.href = '/users'
+          this.$toasted.global.error('Created region!')
+          location.href = '/regions'
         })
         .catch(error => {
           this.errors = error.response.data.errors

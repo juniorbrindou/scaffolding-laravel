@@ -1,10 +1,3 @@
-
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
-
 require('./bootstrap');
 
 window.Vue = require('vue');
@@ -52,21 +45,21 @@ Vue.component('profile-password', require('./components/profile/Password.vue'));
 
 // ressources
 	// regions
-	Vue.component('villes-index', require('./components/regions/Index.vue'));
-	Vue.component('villes-index', require('./components/regions/Create.vue'));
-	Vue.component('villes-index', require('./components/regions/Edit.vue'));
+	Vue.component('regions-index', require('./components/regions/Index.vue'));
+	Vue.component('regions-create', require('./components/regions/Create.vue'));
+	Vue.component('regions-edit', require('./components/regions/Edit.vue'));
 	// villes
 	Vue.component('villes-index', require('./components/villes/Index.vue'));
-	Vue.component('villes-index', require('./components/villes/Create.vue'));
+	Vue.component('villes-create', require('./components/villes/Create.vue'));
 	Vue.component('villes-index', require('./components/villes/Edit.vue'));
 	// communes
-	Vue.component('villes-index', require('./components/communes/Index.vue'));
-	Vue.component('villes-index', require('./components/communes/Create.vue'));
-	Vue.component('villes-index', require('./components/communes/Edit.vue'));
+	Vue.component('communes-index', require('./components/communes/Index.vue'));
+	Vue.component('communes-create', require('./components/communes/Create.vue'));
+	Vue.component('communes-edit', require('./components/communes/Edit.vue'));
 	// quartiers
-	Vue.component('villes-index', require('./components/quartiers/Index.vue'));
-	Vue.component('villes-index', require('./components/quartiers/Create.vue'));
-	Vue.component('villes-index', require('./components/quartiers/Edit.vue'));
+	Vue.component('quartiers-index', require('./components/quartiers/Index.vue'));
+	Vue.component('quartiers-create', require('./components/quartiers/Create.vue'));
+	Vue.component('quartiers-edit', require('./components/quartiers/Edit.vue'));
 
 
 const app = new Vue({
