@@ -71216,43 +71216,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      user: {
-        roles: []
-      },
-      roles: [],
+      ville: {},
       errors: {},
       submiting: false
     };
-  },
-  mounted: function mounted() {
-    this.getRoles();
   },
 
   methods: {
@@ -71261,23 +71232,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
       if (!this.submiting) {
         this.submiting = true;
-        axios.post('/api/users/store', this.user).then(function (response) {
-          _this.$toasted.global.error('Created user!');
-          location.href = '/users';
+        axios.post('/api/villes/store', this.ville).then(function (response) {
+          _this.$toasted.global.error('Ville Crée!');
+          location.href = '/villes';
         }).catch(function (error) {
           _this.errors = error.response.data.errors;
           _this.submiting = false;
         });
       }
-    },
-    getRoles: function getRoles() {
-      var _this2 = this;
-
-      axios.get('/api/roles/all').then(function (response) {
-        _this2.roles = response.data;
-      }).catch(function (error) {
-        _this2.errors = error.response.data.errors;
-      });
     }
   }
 });
@@ -71297,7 +71259,9 @@ var render = function() {
           "div",
           { staticClass: "card-header px-0 mt-2 bg-transparent clearfix" },
           [
-            _c("h4", { staticClass: "float-left pt-2" }, [_vm._v("New User")]),
+            _c("h4", { staticClass: "float-left pt-2" }, [
+              _vm._v("Nouvelle Ville")
+            ]),
             _vm._v(" "),
             _c("div", { staticClass: "card-header-actions mr-1" }, [
               _c(
@@ -71317,7 +71281,7 @@ var render = function() {
                     ? _c("i", { staticClass: "fas fa-spinner fa-spin" })
                     : _c("i", { staticClass: "fas fa-check" }),
                   _vm._v(" "),
-                  _c("span", { staticClass: "ml-1" }, [_vm._v("Save")])
+                  _c("span", { staticClass: "ml-1" }, [_vm._v("Enregistrer")])
                 ]
               )
             ])
@@ -71326,27 +71290,27 @@ var render = function() {
         _vm._v(" "),
         _c("div", { staticClass: "card-body px-0" }, [
           _c("div", { staticClass: "form-group" }, [
-            _c("label", [_vm._v("Full Name")]),
+            _c("label", [_vm._v("Nom de Ville")]),
             _vm._v(" "),
             _c("input", {
               directives: [
                 {
                   name: "model",
                   rawName: "v-model",
-                  value: _vm.user.name,
-                  expression: "user.name"
+                  value: _vm.ville.name,
+                  expression: "ville.name"
                 }
               ],
               staticClass: "form-control",
               class: { "is-invalid": _vm.errors.name },
-              attrs: { type: "text", placeholder: "John Doe" },
-              domProps: { value: _vm.user.name },
+              attrs: { type: "text", placeholder: "Abidjan" },
+              domProps: { value: _vm.ville.name },
               on: {
                 input: function($event) {
                   if ($event.target.composing) {
                     return
                   }
-                  _vm.$set(_vm.user, "name", $event.target.value)
+                  _vm.$set(_vm.ville, "name", $event.target.value)
                 }
               }
             }),
@@ -71356,106 +71320,7 @@ var render = function() {
                   _vm._v(_vm._s(_vm.errors.name[0]))
                 ])
               : _vm._e()
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form-group" }, [
-            _c("label", [_vm._v("Email")]),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.user.email,
-                  expression: "user.email"
-                }
-              ],
-              staticClass: "form-control",
-              class: { "is-invalid": _vm.errors.email },
-              attrs: { type: "email", placeholder: "john@modulr.io" },
-              domProps: { value: _vm.user.email },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.user, "email", $event.target.value)
-                }
-              }
-            }),
-            _vm._v(" "),
-            _vm.errors.email
-              ? _c("div", { staticClass: "invalid-feedback" }, [
-                  _vm._v(_vm._s(_vm.errors.email[0]))
-                ])
-              : _vm._e()
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form-group" }, [
-            _c("label", [_vm._v("Password")]),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.user.password,
-                  expression: "user.password"
-                }
-              ],
-              staticClass: "form-control",
-              class: { "is-invalid": _vm.errors.password },
-              attrs: { type: "password" },
-              domProps: { value: _vm.user.password },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.user, "password", $event.target.value)
-                }
-              }
-            }),
-            _vm._v(" "),
-            _vm.errors.password
-              ? _c("div", { staticClass: "invalid-feedback" }, [
-                  _vm._v(_vm._s(_vm.errors.password[0]))
-                ])
-              : _vm._e()
-          ]),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "form-group" },
-            [
-              _c("label", [_vm._v("Roles")]),
-              _vm._v(" "),
-              _c("multiselect", {
-                class: { "border border-danger rounded": _vm.errors.roles },
-                attrs: {
-                  options: _vm.roles,
-                  multiple: true,
-                  openDirection: "bottom",
-                  "track-by": "id",
-                  label: "display_name"
-                },
-                model: {
-                  value: _vm.user.roles,
-                  callback: function($$v) {
-                    _vm.$set(_vm.user, "roles", $$v)
-                  },
-                  expression: "user.roles"
-                }
-              }),
-              _vm._v(" "),
-              _vm.errors.roles
-                ? _c("small", { staticClass: "form-text text-danger" }, [
-                    _vm._v(_vm._s(_vm.errors.roles[0]))
-                  ])
-                : _vm._e()
-            ],
-            1
-          )
+          ])
         ])
       ])
     ])

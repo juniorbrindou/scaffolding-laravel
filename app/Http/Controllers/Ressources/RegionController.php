@@ -12,7 +12,7 @@ class RegionController extends Controller
     public function all()
     {
         $region = Region::all();
-        return $region;
+        return response()->json([$request->all()]);
     }
 
     /*Show the form for creating a new resource.*/
