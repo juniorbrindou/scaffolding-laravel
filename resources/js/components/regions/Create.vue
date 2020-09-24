@@ -30,16 +30,10 @@
 export default {
   data () {
     return {
-      region: {
-        roles: []
-      },
-      roles: [],
+      region: {},
       errors: {},
       submiting: false
     }
-  },
-  mounted () {
-    this.getRoles()
   },
   methods: {
     create () {
