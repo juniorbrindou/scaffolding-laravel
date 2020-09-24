@@ -74453,50 +74453,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      role: {},
+      quartier: {},
       errors: {},
       loading: true,
       submiting: false
     };
-  },
-  mounted: function mounted() {
-    this.getModulesPermissions();
   },
 
   methods: {
@@ -74505,33 +74470,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
       if (!this.submiting) {
         this.submiting = true;
-        axios.post('/api/roles/store', this.role).then(function (response) {
-          _this.$toasted.global.error('Created role!');
-          location.href = '/roles';
+        axios.post('/api/quartiers/store', this.role).then(function (response) {
+          _this.$toasted.global.error('Quartier Crée!');
+          location.href = '/quartiers';
         }).catch(function (error) {
           _this.errors = error.response.data.errors;
           _this.submiting = false;
         });
       }
-    },
-    getModulesPermissions: function getModulesPermissions() {
-      var _this2 = this;
-
-      this.loading = true;
-      axios.get('/api/modules/getModulesPermissions').then(function (response) {
-        _this2.role.modulesPermissions = response.data;
-        _this2.loading = false;
-        //this.$set(this.role, 'modules', response.data)
-      });
-    }
-  },
-  watch: {
-    'role.display_name': function roleDisplay_name(val) {
-      this.role.name = val.toString().toLowerCase().replace(/\s+/g, '-') // Replace spaces with -
-      .replace(/[^\w\-]+/g, '') // Remove all non-word chars
-      .replace(/\-\-+/g, '-') // Replace multiple - with single -
-      .replace(/^-+/, '') // Trim - from start of text
-      .replace(/-+$/, '');
     }
   }
 });
@@ -74551,7 +74497,9 @@ var render = function() {
           "div",
           { staticClass: "card-header px-0 mt-2 bg-transparent clearfix" },
           [
-            _c("h4", { staticClass: "float-left pt-2" }, [_vm._v("New Role")]),
+            _c("h4", { staticClass: "float-left pt-2" }, [
+              _vm._v("Nouveau Quartier")
+            ]),
             _vm._v(" "),
             _c("div", { staticClass: "card-header-actions mr-1" }, [
               _c(
@@ -74571,71 +74519,36 @@ var render = function() {
                     ? _c("i", { staticClass: "fas fa-spinner fa-spin" })
                     : _c("i", { staticClass: "fas fa-check" }),
                   _vm._v(" "),
-                  _c("span", { staticClass: "ml-1" }, [_vm._v("Save")])
+                  _c("span", { staticClass: "ml-1" }, [_vm._v("Enregistrer")])
                 ]
               )
             ])
           ]
         ),
         _vm._v(" "),
-        _vm._m(0),
-        _vm._v(" "),
         _c("div", { staticClass: "card-body px-0" }, [
           _c("div", { staticClass: "form-group" }, [
-            _c("label", [_vm._v("Role name")]),
+            _c("label", [_vm._v("Nom de Quartier")]),
             _vm._v(" "),
             _c("input", {
               directives: [
                 {
                   name: "model",
                   rawName: "v-model",
-                  value: _vm.role.display_name,
-                  expression: "role.display_name"
-                }
-              ],
-              staticClass: "form-control",
-              class: { "is-invalid": _vm.errors.display_name },
-              attrs: { type: "text", placeholder: "Admin", autofocus: "" },
-              domProps: { value: _vm.role.display_name },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.role, "display_name", $event.target.value)
-                }
-              }
-            }),
-            _vm._v(" "),
-            _vm.errors.display_name
-              ? _c("div", { staticClass: "invalid-feedback" }, [
-                  _vm._v(_vm._s(_vm.errors.display_name[0]))
-                ])
-              : _vm._e()
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form-group" }, [
-            _c("label", [_vm._v("Role slug")]),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.role.name,
-                  expression: "role.name"
+                  value: _vm.quartier.name,
+                  expression: "quartier.name"
                 }
               ],
               staticClass: "form-control",
               class: { "is-invalid": _vm.errors.name },
-              attrs: { type: "text", placeholder: "admin", readonly: "" },
-              domProps: { value: _vm.role.name },
+              attrs: { type: "text", placeholder: "Quartier" },
+              domProps: { value: _vm.quartier.name },
               on: {
                 input: function($event) {
                   if ($event.target.composing) {
                     return
                   }
-                  _vm.$set(_vm.role, "name", $event.target.value)
+                  _vm.$set(_vm.quartier, "name", $event.target.value)
                 }
               }
             }),
@@ -74646,157 +74559,12 @@ var render = function() {
                 ])
               : _vm._e()
           ])
-        ]),
-        _vm._v(" "),
-        _vm._m(1),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "card-body" },
-          [
-            !_vm.loading
-              ? _c(
-                  "form",
-                  { staticClass: "form-horizontal" },
-                  _vm._l(_vm.role.modulesPermissions, function(module) {
-                    return _c(
-                      "div",
-                      { key: module, staticClass: "form-group row" },
-                      [
-                        _c("label", { staticClass: "col-md-3" }, [
-                          _c("strong", [_vm._v(_vm._s(module.display_name))])
-                        ]),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          { staticClass: "col-md-9" },
-                          _vm._l(module.permissions, function(permission) {
-                            return _c(
-                              "div",
-                              { key: permission, staticClass: "clearfix" },
-                              [
-                                _c("span", [
-                                  _vm._v(_vm._s(permission.display_name))
-                                ]),
-                                _vm._v(" "),
-                                _c(
-                                  "label",
-                                  {
-                                    staticClass:
-                                      "switch switch-pill switch-outline-success-alt float-right"
-                                  },
-                                  [
-                                    _c("input", {
-                                      directives: [
-                                        {
-                                          name: "model",
-                                          rawName: "v-model",
-                                          value: permission.allow,
-                                          expression: "permission.allow"
-                                        }
-                                      ],
-                                      staticClass: "switch-input",
-                                      attrs: { type: "checkbox" },
-                                      domProps: {
-                                        checked: Array.isArray(permission.allow)
-                                          ? _vm._i(permission.allow, null) > -1
-                                          : permission.allow
-                                      },
-                                      on: {
-                                        change: function($event) {
-                                          var $$a = permission.allow,
-                                            $$el = $event.target,
-                                            $$c = $$el.checked ? true : false
-                                          if (Array.isArray($$a)) {
-                                            var $$v = null,
-                                              $$i = _vm._i($$a, $$v)
-                                            if ($$el.checked) {
-                                              $$i < 0 &&
-                                                _vm.$set(
-                                                  permission,
-                                                  "allow",
-                                                  $$a.concat([$$v])
-                                                )
-                                            } else {
-                                              $$i > -1 &&
-                                                _vm.$set(
-                                                  permission,
-                                                  "allow",
-                                                  $$a
-                                                    .slice(0, $$i)
-                                                    .concat($$a.slice($$i + 1))
-                                                )
-                                            }
-                                          } else {
-                                            _vm.$set(permission, "allow", $$c)
-                                          }
-                                        }
-                                      }
-                                    }),
-                                    _vm._v(" "),
-                                    _c("span", { staticClass: "switch-slider" })
-                                  ]
-                                ),
-                                _vm._v(" "),
-                                _c("hr")
-                              ]
-                            )
-                          }),
-                          0
-                        )
-                      ]
-                    )
-                  }),
-                  0
-                )
-              : _c(
-                  "content-placeholders",
-                  [
-                    _c("content-placeholders-heading", {
-                      attrs: { img: true }
-                    }),
-                    _vm._v(" "),
-                    _c("content-placeholders-heading", { attrs: { img: true } })
-                  ],
-                  1
-                )
-          ],
-          1
-        )
+        ])
       ])
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-header px-0 bg-transparent" }, [
-      _c("strong", [_vm._v("General")]),
-      _c("br"),
-      _vm._v(" "),
-      _c("small", { staticClass: "text-muted" }, [
-        _vm._v(
-          "Create a new role and choose the permissions so you can assign it to users."
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-header px-0 bg-transparent" }, [
-      _c("strong", [_vm._v("Permissions")]),
-      _c("br"),
-      _vm._v(" "),
-      _c("small", { staticClass: "text-muted" }, [
-        _vm._v("Enable or disable permissions and choose access to modules.")
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
