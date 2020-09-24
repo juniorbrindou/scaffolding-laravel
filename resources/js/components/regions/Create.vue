@@ -16,7 +16,7 @@
 
           <div class="form-group">
             <label>Nom de Région</label>
-            <input type="text" class="form-control" :class="{'is-invalid': errors.name}" v-model="region.name" placeholder="Abidjan">
+            <input type="text" class="form-control" :class="{'is-invalid': errors.name}" v-model="region.name" placeholder="Sud Bandama">
             <div class="invalid-feedback" v-if="errors.name">{{errors.name[0]}}</div>
           </div>
 

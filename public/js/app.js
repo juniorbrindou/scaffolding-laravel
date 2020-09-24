@@ -69944,7 +69944,7 @@ var render = function() {
               ],
               staticClass: "form-control",
               class: { "is-invalid": _vm.errors.name },
-              attrs: { type: "text", placeholder: "Abidjan" },
+              attrs: { type: "text", placeholder: "Sud Bandama" },
               domProps: { value: _vm.region.name },
               on: {
                 input: function($event) {
