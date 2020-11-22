@@ -19,7 +19,7 @@ Route::middleware('auth')->group(function () {
 
             // Route::get('/getUserRoles/{user}', 'UserController@getUserRoles');
             // Route::get('/count', 'RegionController@count');
-            // Route::post('/filter', 'RegionController@filter');
+            Route::post('/filter', 'RegionController@all');
 
             // Route::get('/{user}', 'RegionController@show')->middleware('permission:read-users');
             Route::post('/store', 'RegionController@store');
